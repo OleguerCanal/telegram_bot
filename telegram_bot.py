@@ -5,7 +5,7 @@ import requests
 class TelegramBot():
     def __init__(self, param_file="/home/oleguer/.telegram_bots/oleguer-hab.yaml"):
         stream = open(param_file, 'r')
-        params = yaml.load(stream)
+        params = yaml.load(stream, Loader=yaml.FullLoader)
         self.bot_token = str(params["bot_token"])
         self.bot_chatID = str(params["bot_chatID"])
 
