@@ -10,8 +10,12 @@ class TelegramBot():
         self.bot_chatID = str(params["bot_chatID"])
 
     def send(self, bot_message):
-        send_text = 'https://api.telegram.org/bot' + self.bot_token + '/sendMessage?chat_id=' + self.bot_chatID + '&parse_mode=Markdown&text=' + bot_message
-        response = requests.get(send_text)
+        try:
+            send_text = 'https://api.telegram.org/bot' + self.bot_token + '/sendMessage?chat_id=' + self.bot_chatID + '&parse_mode=Markdown&text=' + bot_message
+            response = requests.get(send_text)
+        except Exception as e:
+            print(e)
+            return None
         return response.json()
         
 
